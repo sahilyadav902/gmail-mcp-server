@@ -323,7 +323,7 @@ def search_gmail_messages(
 
 
 def main() -> None:
-    server.run()
+    server.run(transport="stdio")
 
 
 if __name__ == "__main__":
