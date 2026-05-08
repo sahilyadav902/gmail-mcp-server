@@ -99,7 +99,7 @@ class GmailClient:
             os.environ.get("GMAIL_MCP_CREDENTIALS_FILE", "credentials.json")
         ).expanduser()
         self.token_path = Path(
-            os.environ.get("GMAIL_MCP_TOKEN_FILE", ".sudo-gmail-mcp/token.json")
+            os.environ.get("GMAIL_MCP_TOKEN_FILE", "token.json")
         ).expanduser()
         self._service = None
 

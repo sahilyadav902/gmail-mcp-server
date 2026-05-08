@@ -194,7 +194,7 @@ The first time the server needs Gmail access, it opens a local browser OAuth flo
 
 By default:
 - client credentials file: `credentials.json`
-- refresh token file: `.sudo-gmail-mcp/token.json`
+- refresh token file: `token.json`
 
 Environment variables:
 
