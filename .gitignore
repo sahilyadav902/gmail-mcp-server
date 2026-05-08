@@ -5,7 +5,7 @@ __pycache__/
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
-.sudo-gmail-mcp/
+.sudo-mcp-gmail/
 .env
 credentials.json
 token.json

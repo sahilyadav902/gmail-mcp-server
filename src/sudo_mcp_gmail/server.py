@@ -5,7 +5,7 @@ from typing import Any
 from googleapiclient.errors import HttpError
 from mcp.server.fastmcp import FastMCP
 
-from sudo_gmail_mcp.gmail_client import (
+from sudo_mcp_gmail.gmail_client import (
     AttachmentError,
     AttachmentInput,
     GmailClient,
@@ -13,7 +13,7 @@ from sudo_gmail_mcp.gmail_client import (
     format_http_error,
 )
 
-server = FastMCP("sudo-gmail-mcp")
+server = FastMCP("sudo-mcp-gmail")
 client = GmailClient()
 
 

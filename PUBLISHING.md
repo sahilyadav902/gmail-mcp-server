@@ -1,4 +1,4 @@
-# Publishing `sudo-gmail-mcp` to PyPI
+# Publishing `sudo-mcp-gmail` to PyPI
 
 This guide covers:
 - publishing the package to PyPI for the first time
@@ -33,7 +33,7 @@ This installs:
 
 Before every release, check these files:
 - `pyproject.toml`
-- `src/sudo_gmail_mcp/__init__.py`
+- `src/sudo_mcp_gmail/__init__.py`
 
 The version should match in both places.
 
@@ -62,8 +62,8 @@ python -m build
 ```
 
 This creates:
-- `dist/sudo_gmail_mcp-<version>.tar.gz`
-- `dist/sudo_gmail_mcp-<version>-py3-none-any.whl`
+- `dist/sudo_mcp_gmail-<version>.tar.gz`
+- `dist/sudo_mcp_gmail-<version>-py3-none-any.whl`
 
 ### 3. Validate the package metadata
 
@@ -82,13 +82,13 @@ You will be prompted for your TestPyPI credentials unless you have them configur
 ### 5. Verify install from TestPyPI
 
 ```bash
-pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple sudo-gmail-mcp
+pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple sudo-mcp-gmail
 ```
 
 Then test the installed command:
 
 ```bash
-sudo-gmail-mcp
+sudo-mcp-gmail
 ```
 
 ### 6. Upload to real PyPI
@@ -100,13 +100,13 @@ python -m twine upload dist/*
 ### 7. Verify install from PyPI
 
 ```bash
-pip install sudo-gmail-mcp
+pip install sudo-mcp-gmail
 ```
 
 Run it:
 
 ```bash
-sudo-gmail-mcp
+sudo-mcp-gmail
 ```
 
 ## Releasing a new version after code changes
@@ -117,7 +117,7 @@ Whenever you add features, fix bugs, or change package behavior, publish a new v
 
 Update both:
 - `pyproject.toml`
-- `src/sudo_gmail_mcp/__init__.py`
+- `src/sudo_mcp_gmail/__init__.py`
 
 Example version bumps:
 - bug fix only: `0.1.0` -> `0.1.1`
@@ -136,7 +136,7 @@ On Windows PowerShell:
 
 ```powershell
 Remove-Item -Recurse -Force dist, build
-Remove-Item -Recurse -Force src\sudo_gmail_mcp.egg-info
+Remove-Item -Recurse -Force src\sudo_mcp_gmail.egg-info
 ```
 
 ### 3. Reinstall dev dependencies if needed
@@ -195,7 +195,7 @@ For every release:
 6. run `twine check`
 7. upload to TestPyPI if desired
 8. upload to PyPI
-9. verify `pip install sudo-gmail-mcp`
+9. verify `pip install sudo-mcp-gmail`
 10. optionally create a matching git tag
 
 ## Optional git tagging
@@ -230,7 +230,7 @@ python -m twine upload dist/*
 ### New release
 
 ```bash
-# bump version in pyproject.toml and src/sudo_gmail_mcp/__init__.py
+# bump version in pyproject.toml and src/sudo_mcp_gmail/__init__.py
 rm -rf dist build src/*.egg-info
 pip install -e .[dev]
 python -m pytest

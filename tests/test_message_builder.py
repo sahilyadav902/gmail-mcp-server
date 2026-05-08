@@ -3,7 +3,7 @@ from pathlib import Path
 
 import pytest
 
-from sudo_gmail_mcp.gmail_client import (
+from sudo_mcp_gmail.gmail_client import (
     AttachmentInput,
     AttachmentTooLargeError,
     RemoteAttachmentSession,
@@ -245,7 +245,7 @@ def test_remote_attachment_rejects_stream_larger_than_limit() -> None:
 
 
 def test_build_message_request_supports_remote_attachment() -> None:
-    import sudo_gmail_mcp.gmail_client as gmail_client
+    import sudo_mcp_gmail.gmail_client as gmail_client
 
     original = gmail_client.DEFAULT_REMOTE_ATTACHMENT_SESSION
     gmail_client.DEFAULT_REMOTE_ATTACHMENT_SESSION = MessageRequestSession()
