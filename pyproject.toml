@@ -1,13 +1,28 @@
 [build-system]
-requires = ["setuptools>=69", "wheel"]
+requires = ["setuptools>=69", "wheel", "build"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "gmail-mcp"
+name = "sudo-gmail-mcp"
 version = "0.1.0"
-description = "MCP server for Gmail draft creation, reading, and search"
+description = "Python MCP server for Gmail drafts, sending, search, and mailbox workflows"
 readme = "README.md"
 requires-python = ">=3.10"
+license = "MIT"
+authors = [
+  {name = "Sahil Yadav"},
+]
+keywords = ["gmail", "mcp", "claude", "codex", "email", "python"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Developers",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Communications :: Email",
+  "Topic :: Software Development :: Libraries :: Python Modules",
+]
 dependencies = [
   "mcp>=1.9.0",
   "google-api-python-client>=2.169.0",
@@ -16,14 +31,24 @@ dependencies = [
   "requests>=2.32.0",
 ]
 
+[project.urls]
+Homepage = "https://github.com/sahilyadav902/gmail-mcp-server"
+Repository = "https://github.com/sahilyadav902/gmail-mcp-server"
+Issues = "https://github.com/sahilyadav902/gmail-mcp-server/issues"
+
 [project.optional-dependencies]
-dev = ["pytest>=9.0.0"]
+dev = [
+  "build>=1.2.2",
+  "pytest>=9.0.0",
+  "twine>=6.1.0",
+]
 
 [project.scripts]
-gmail-mcp = "gmail_mcp.server:main"
+sudo-gmail-mcp = "gmail_mcp.server:main"
 
 [tool.setuptools]
 package-dir = {"" = "src"}
+include-package-data = true
 
 [tool.setuptools.packages.find]
 where = ["src"]

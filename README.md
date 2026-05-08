@@ -1,6 +1,6 @@
-# Gmail MCP Server
+# sudo-gmail-mcp
 
-A Python MCP server for Gmail that lets MCP clients such as Claude Desktop, Codex desktop, and other compatible clients:
+A Python MCP server for Gmail that lets MCP clients such as Claude Desktop, Codex desktop, and other compatible clients use the published package name `sudo-gmail-mcp`:
 
 - create Gmail drafts with `to`, `cc`, `bcc`, `subject`, `body_text`, optional `body_html`, and attachments from local files or HTTPS URLs
 - update existing Gmail drafts
@@ -160,12 +160,32 @@ Inputs:
 9. Download the JSON credentials file.
 10. Save it as `credentials.json` in the project root, or set a custom path with `GMAIL_MCP_CREDENTIALS_FILE`.
 
-## Install
+## Install from source
 
 ```bash
 python -m venv .venv
 source .venv/Scripts/activate
 pip install -e .
+```
+
+## Install from pip
+
+After you publish the package to PyPI, install it anywhere without cloning the repo:
+
+```bash
+pip install sudo-gmail-mcp
+```
+
+Then run it with:
+
+```bash
+sudo-gmail-mcp
+```
+
+If you want to pin a specific release:
+
+```bash
+pip install sudo-gmail-mcp==0.1.0
 ```
 
 ## Authentication
@@ -174,7 +194,7 @@ The first time the server needs Gmail access, it opens a local browser OAuth flo
 
 By default:
 - client credentials file: `credentials.json`
-- refresh token file: `.gmail-mcp/token.json`
+- refresh token file: `.sudo-gmail-mcp/token.json`
 
 Environment variables:
 
@@ -198,7 +218,7 @@ $env:GMAIL_MCP_TOKEN_FILE = "C:\path\to\token.json"
 ## Run locally
 
 ```bash
-gmail-mcp
+sudo-gmail-mcp
 ```
 
 ## Claude Desktop MCP config
@@ -209,7 +229,7 @@ Add a server entry pointing to the installed command. Example shape:
 {
   "mcpServers": {
     "gmail": {
-      "command": "gmail-mcp",
+      "command": "sudo-gmail-mcp",
       "env": {
         "GMAIL_MCP_CREDENTIALS_FILE": "C:/path/to/credentials.json",
         "GMAIL_MCP_TOKEN_FILE": "C:/path/to/token.json"
@@ -239,7 +259,7 @@ If your client requires launching via Python directly, use:
 ## Codex or other MCP clients
 
 Use the same pattern:
-- command: `gmail-mcp` or `python -m gmail_mcp.server`
+- command: `sudo-gmail-mcp` or `python -m gmail_mcp.server`
 - pass the Gmail credentials/token file paths through environment variables
 
 ## Attachment URL safety
@@ -286,6 +306,51 @@ Safety behavior:
 - Remote attachment URLs are restricted to HTTPS and blocked for localhost/private-network targets.
 - Remote attachment downloads are limited to 10 MB.
 
+## Build and publish the pip package
+
+Build distributable artifacts:
+
+```bash
+python -m pip install --upgrade pip
+pip install -e .[dev]
+python -m build
+```
+
+This creates:
+- `dist/*.tar.gz` — source distribution
+- `dist/*.whl` — wheel distribution
+
+Validate the package metadata before upload:
+
+```bash
+python -m twine check dist/*
+```
+
+Upload to TestPyPI first:
+
+```bash
+python -m twine upload --repository testpypi dist/*
+```
+
+Install from TestPyPI to verify:
+
+```bash
+pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple sudo-gmail-mcp
+```
+
+Upload to PyPI:
+
+```bash
+python -m twine upload dist/*
+```
+
+After publishing, anyone can install and run it with:
+
+```bash
+pip install sudo-gmail-mcp
+sudo-gmail-mcp
+```
+
 ## Development
 
 Install development tooling:
@@ -294,6 +359,16 @@ Install development tooling:
 pip install -e .[dev]
 pytest
 ```
+
+## Release checklist
+
+1. Update the version in `pyproject.toml` and `src/gmail_mcp/__init__.py`.
+2. Clear old build artifacts if needed.
+3. Run `pytest`.
+4. Run `python -m build`.
+5. Run `python -m twine check dist/*`.
+6. Upload to TestPyPI, verify install, then upload to PyPI.
+7. Create a git tag matching the release version if you want versioned releases in GitHub.
 
 ## Suggested future features
 

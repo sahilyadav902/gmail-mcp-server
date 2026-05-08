@@ -5,8 +5,10 @@ __pycache__/
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
-.gmail-mcp/
+.sudo-gmail-mcp/
 .env
 credentials.json
 token.json
 brainstorm.md
+dist/
+build/

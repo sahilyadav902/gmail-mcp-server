@@ -13,7 +13,7 @@ from gmail_mcp.gmail_client import (
     format_http_error,
 )
 
-server = FastMCP("gmail-mcp")
+server = FastMCP("sudo-gmail-mcp")
 client = GmailClient()
 
 
