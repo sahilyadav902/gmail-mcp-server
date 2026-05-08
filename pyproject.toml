@@ -44,7 +44,7 @@ dev = [
 ]
 
 [project.scripts]
-sudo-gmail-mcp = "gmail_mcp.server:main"
+sudo-gmail-mcp = "sudo_gmail_mcp.server:main"
 
 [tool.setuptools]
 package-dir = {"" = "src"}

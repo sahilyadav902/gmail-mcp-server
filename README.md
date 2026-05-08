@@ -246,7 +246,7 @@ If your client requires launching via Python directly, use:
   "mcpServers": {
     "gmail": {
       "command": "python",
-      "args": ["-m", "gmail_mcp.server"],
+      "args": ["-m", "sudo_gmail_mcp.server"],
       "env": {
         "GMAIL_MCP_CREDENTIALS_FILE": "C:/path/to/credentials.json",
         "GMAIL_MCP_TOKEN_FILE": "C:/path/to/token.json"
@@ -259,7 +259,7 @@ If your client requires launching via Python directly, use:
 ## Codex or other MCP clients
 
 Use the same pattern:
-- command: `sudo-gmail-mcp` or `python -m gmail_mcp.server`
+- command: `sudo-gmail-mcp` or `python -m sudo_gmail_mcp.server`
 - pass the Gmail credentials/token file paths through environment variables
 
 ## Attachment URL safety
@@ -362,7 +362,7 @@ pytest
 
 ## Release checklist
 
-1. Update the version in `pyproject.toml` and `src/gmail_mcp/__init__.py`.
+1. Update the version in `pyproject.toml` and `src/sudo_gmail_mcp/__init__.py`.
 2. Clear old build artifacts if needed.
 3. Run `pytest`.
 4. Run `python -m build`.

@@ -33,7 +33,7 @@ This installs:
 
 Before every release, check these files:
 - `pyproject.toml`
-- `src/gmail_mcp/__init__.py`
+- `src/sudo_gmail_mcp/__init__.py`
 
 The version should match in both places.
 
@@ -62,8 +62,8 @@ python -m build
 ```
 
 This creates:
-- `dist/gmail_mcp-<version>.tar.gz`
-- `dist/gmail_mcp-<version>-py3-none-any.whl`
+- `dist/sudo_gmail_mcp-<version>.tar.gz`
+- `dist/sudo_gmail_mcp-<version>-py3-none-any.whl`
 
 ### 3. Validate the package metadata
 
@@ -117,7 +117,7 @@ Whenever you add features, fix bugs, or change package behavior, publish a new v
 
 Update both:
 - `pyproject.toml`
-- `src/gmail_mcp/__init__.py`
+- `src/sudo_gmail_mcp/__init__.py`
 
 Example version bumps:
 - bug fix only: `0.1.0` -> `0.1.1`
@@ -136,7 +136,7 @@ On Windows PowerShell:
 
 ```powershell
 Remove-Item -Recurse -Force dist, build
-Remove-Item -Recurse -Force src\gmail_mcp.egg-info
+Remove-Item -Recurse -Force src\sudo_gmail_mcp.egg-info
 ```
 
 ### 3. Reinstall dev dependencies if needed
@@ -230,7 +230,7 @@ python -m twine upload dist/*
 ### New release
 
 ```bash
-# bump version in pyproject.toml and src/gmail_mcp/__init__.py
+# bump version in pyproject.toml and src/sudo_gmail_mcp/__init__.py
 rm -rf dist build src/*.egg-info
 pip install -e .[dev]
 python -m pytest

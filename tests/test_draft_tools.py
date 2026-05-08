@@ -1,4 +1,4 @@
-from gmail_mcp.gmail_client import format_draft
+from sudo_gmail_mcp.gmail_client import format_draft
 
 
 def test_format_draft_returns_draft_id_and_message_fields() -> None:

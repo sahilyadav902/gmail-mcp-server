@@ -1,4 +1,4 @@
-from gmail_mcp.gmail_client import (
+from sudo_gmail_mcp.gmail_client import (
     UNREAD_LABEL,
     build_forward_body,
     build_forward_subject,
