@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gmail-mcp"
+version = "0.1.0"
+description = "MCP server for Gmail draft creation, reading, and search"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "mcp>=1.9.0",
+  "google-api-python-client>=2.169.0",
+  "google-auth>=2.40.1",
+  "google-auth-oauthlib>=1.2.2",
+  "requests>=2.32.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=9.0.0"]
+
+[project.scripts]
+gmail-mcp = "gmail_mcp.server:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
